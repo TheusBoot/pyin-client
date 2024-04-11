@@ -1,3 +1,15 @@
+from pyln.client import LightningRpc
+# Conecta ao lightningd rodando no path padrão (/tmp/lightning/lightning-rpc)
+
+lnd = LightningRpc()
+
+
+class list_payments:
+    def __init__(self):
+        pass
+
+
+
 # Obtém uma lista de pagamentos recebidos
 payments = lnd.listpayments()
 
