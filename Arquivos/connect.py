@@ -1,4 +1,5 @@
 from pyln.client import LightningRpc
+from time import sleep
 
 
 
@@ -29,6 +30,8 @@ class connect:
     TENTATIVA = 0 # número de tentativas de conexão!
     try:
       while True:
+        sleep(5.1)
+        
         if not self.lnd.is_connected():
           TENTATIVA =+1
           continue
