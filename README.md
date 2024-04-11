@@ -56,3 +56,81 @@ Uma fatura Lightning é uma solicitação de pagamento na Lightning Network. Ela
 - **Flexibilidade:** Você pode criar faturas para diversos tipos de pagamentos, como produtos, serviços ou doações.
 
 Este guia fornece uma visão abrangente das carteiras e faturas Lightning, permitindo que você explore e utilize a Lightning Network de forma eficaz e segura.
+
+
+# 2.2 Gerando Faturas Lightning
+
+## Utilizando o pyln-client:
+
+### Importe a biblioteca:
+```python
+import random
+from pyln.client import LightningRpc
+
+
+Conecte ao Lightning Daemon:
+
+
+# Conecta ao lightningd rodando no path padrão (/tmp/lightning/lightning-rpc)
+lnd = LightningRpc()
+
+# Verifica se a conexão foi bem sucedida
+if not lnd.is_connected():
+    print("Erro: Falha ao conectar ao lightningd")
+    exit()
+
+print("Conectado ao lightningd com sucesso!")
+
+Gere a Fatura:
+
+# Gera um valor aleatório para a fatura em satoshis
+amount = random.randint(1000, 100000)
+
+# Cria uma fatura com descrição e valor
+description = "Pagamento de teste"
+invoice = lnd.invoice(amount, description)
+
+# Exibe os detalhes da fatura, incluindo o ID de pagamento (bolt11)
+print("ID de pagamento (bolt11):", invoice['bolt11'])
+print("Valor da fatura (satoshi):", invoice['msatoshi'])
+print("Descrição:", invoice['description'])
+
+```python
+# 2.2 Gerando Faturas Lightning
+
+## Utilizando o pyln-client:
+
+### Importe a biblioteca:
+```python
+import random
+from pyln.client import LightningRpc
+```
+
+### Conecte ao Lightning Daemon:
+```python
+# Conecta ao lightningd rodando no path padrão (/tmp/lightning/lightning-rpc)
+lnd = LightningRpc()
+
+# Verifica se a conexão foi bem sucedida
+if not lnd.is_connected():
+    print("Erro: Falha ao conectar ao lightningd")
+    exit()
+
+print("Conectado ao lightningd com sucesso!")
+```
+
+### Gere a Fatura:
+```python
+# Gera um valor aleatório para a fatura em satoshis
+amount = random.randint(1000, 100000)
+
+# Cria uma fatura com descrição e valor
+description = "Pagamento de teste"
+invoice = lnd.invoice(amount, description)
+
+# Exibe os detalhes da fatura, incluindo o ID de pagamento (bolt11)
+print("ID de pagamento (bolt11):", invoice['bolt11'])
+print("Valor da fatura (satoshi):", invoice['msatoshi'])
+print("Descrição:", invoice['description'])
+```
+```
